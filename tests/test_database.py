@@ -1,16 +1,9 @@
-from pathlib import Path
-
-import pytest
-
 from data_cleaning.database import Database, construct_database
 
+from .utils import skip_if_missing_data
 
-@pytest.mark.skipif(
-    not Path(__file__)
-    .parent.parent.joinpath("data_cleaning", "resources", "blak-domarar.csv")
-    .exists(),
-    reason="Data files missing",
-)
+
+@skip_if_missing_data
 def test_database_creation():
     db: Database = construct_database()
     assert [col for col in db.domarar.columns] == [
