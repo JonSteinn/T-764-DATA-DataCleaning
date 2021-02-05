@@ -39,7 +39,7 @@
     ".vscode/": false,
     "LICENSE": true,
     "MANIFEST.in": true,
-    ".gitignore": false,
+    ".gitignore": true,
     ".gitattribute": true,
     ".flake8": true,
     ".pylintrc": true,
