@@ -32,7 +32,7 @@ setup(
     packages=find_packages(),
     long_description_content_type="text/x-rst",
     long_description=read("README.rst"),
-    install_requires=[],
+    install_requires=["pandas>=1.2.1"],
     python_requires=">=3.7",
     include_package_data=True,
     classifiers=[
