@@ -1,5 +1,6 @@
+from itertools import starmap
 from pathlib import Path
-from typing import NamedTuple
+from typing import List, NamedTuple
 
 import pandas as pd
 
@@ -22,20 +23,38 @@ class Database(NamedTuple):
     thjalfarar: pd.DataFrame
 
 
-def read_csv_file(csv_file: str) -> pd.DataFrame:
+def read_csv_file(csv_file: str, index: List[str]) -> pd.DataFrame:
     """Read a csv file."""
-    return pd.read_csv(_CSV_ROOT_PATH.joinpath(csv_file), encoding="utf-8-sig", sep=";")
+    return pd.read_csv(
+        _CSV_ROOT_PATH.joinpath(csv_file),
+        encoding="utf-8-sig",
+        sep=";",
+        index_col=index[0] if len(index) == 1 else index,
+    )
 
 
 def construct_database() -> Database:
     """Read all csv file into a `Database` object."""
     return Database(
-        *map(
+        *starmap(
             read_csv_file,
-            sorted(
-                glob.name
-                for glob in _CSV_ROOT_PATH.glob("**/*")
-                if glob.is_file() and glob.name.endswith(".csv")
+            zip(
+                sorted(
+                    glob.name
+                    for glob in _CSV_ROOT_PATH.glob("**/*")
+                    if glob.is_file() and glob.name.endswith(".csv")
+                ),
+                (
+                    ["MotID", "EinstID"],
+                    ["EinstID"],
+                    ["MotID", "LidID", "EinstID"],
+                    ["LidID"],
+                    ["MotID", "LidID"],
+                    ["MotID", "LidID", "EinstID"],
+                    ["MotID", "LidID", "EinstID"],
+                    ["MotID"],
+                    ["MotID", "LidID", "EinstID"],
+                ),
             ),
         )
     )
