@@ -88,3 +88,13 @@ def test_database_creation():
         "EinstID",
         "Timastimpill",
     ]
+
+    assert db.domarar.shape == (840, 4)
+    assert db.einstaklingar.shape == (4497, 14)
+    assert db.forsvarsmenn.shape == (7037, 4)
+    assert db.lid.shape == (1242, 7)
+    assert db.lidimoti.shape == (1000, 7)
+    assert db.lidsmenn.shape == (25852, 4)
+    assert db.lidsstjorar.shape == (1772, 4)
+    assert db.mot.shape == (242, 16)
+    assert db.thjalfarar.shape == (3495, 4)
