@@ -31,7 +31,7 @@ setup(
     },
     packages=find_packages(),
     long_description_content_type="text/x-rst",
-    long_description=read("README.rst"),
+    long_description=read("README.md"),
     install_requires=["pandas>=1.2.1", "textdistance>=4.2.1", "tqdm>=4.56.0"],
     python_requires=">=3.7",
     include_package_data=True,
