@@ -48,7 +48,7 @@
     ".travis.yml": true,
     ".isort.cfg": true,
     "tox.ini": true,
-    "setup.py": false,
+    "setup.py": true,
     "README.rst": true,
     "README.md": true,
     "pyproject.toml": true,
