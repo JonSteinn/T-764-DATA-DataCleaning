@@ -1,3 +1,4 @@
+import json
 from collections import deque
 from typing import Deque, Iterable, List, Set
 
@@ -14,6 +15,16 @@ def _to_tikz(dups: Set[int], individuals: pd.DataFrame):
                     f"\\draw[line width=0.00666666667] (0,{i}/85) -- (50,{i}/85);\n"
                 )
         f.write("\\end{tikzpicture}")
+
+
+def _to_json(lis: Deque[Deque[int]]):
+    json_dict = {}
+    for deq in lis:
+        master = deq.popleft()
+        json_dict[master] = list(deq)
+        deq.appendleft(master)
+    with open("map.json", "w") as f:
+        f.write(json.dumps(json_dict))
 
 
 def _dup_yielder(lis: Deque[Deque[int]]):
@@ -51,4 +62,8 @@ def _write_to_csv(
 
 def process_results(duplicated: Iterable[List[int]], individuals: pd.DataFrame):
     """Process the results. This will write the groups to a .csv and visualize."""
-    _plot(_write_to_csv(duplicated, individuals), individuals)
+    deqs = _write_to_csv(duplicated, individuals)
+    lis = list(map(len, deqs))
+    _to_json(deqs)
+    assert list(map(len, deqs)) == lis
+    _plot(deqs, individuals)
