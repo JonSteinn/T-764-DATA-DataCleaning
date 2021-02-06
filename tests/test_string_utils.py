@@ -14,3 +14,8 @@ def test_nicknames():
 def test_initials():
     name = "Jón Steinn Elíasson"
     assert su.initials(name) == "JSE"
+
+
+def test_remove_son_daughter():
+    assert su.remove_son_dottir("abcson") == "abc"
+    assert su.remove_son_dottir("cdedottir") == "cde"
