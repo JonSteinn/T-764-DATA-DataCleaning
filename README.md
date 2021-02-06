@@ -1,5 +1,6 @@
 # Data cleaning
-Finding duplicates of individual in an old Icelandic volleyball database that was in use.
+Finding duplicates of individual in an old Icelandic volleyball database that was in use
+some time ago and is quite distorted.
 
 **Note**
 The data is private and therefore not included in the repository. Without it this won't work.
