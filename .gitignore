@@ -132,4 +132,3 @@ dmypy.json
 data_cleaning/resources/*.csv
 duplicates.csv
 latex.txt
-map.json

@@ -1,0 +1,9 @@
+The best way to avoid duplicates is not to produce them to begin with. That can be easier said than done as we might have limited control over data in the wilderness. Redundant data increases as data grows and given its volume today, the need for data cleaning has never been greater.
+
+The legacy database we look at is from an Icelandic volleyball association where records were manually entered. We assume that existing individuals were looked up by name to determine if they already existed. If not a new individual was created. 
+
+Even in a country as sparsely populated as Iceland and its small subset of people associated with volleyball one cannot assume the uniqueness of names. Adding date of birth might suffice (for this scenario, not generally) but one never knows beforehand and there are so many issues associated with such identifiers. Berman goes over a few in \cite{berman} such as names can change and special typographic characters and probably the most common one, the human error factor.
+
+We apply some similarity matching and some domain specific string manipulation to try to detect as many duplicates as possible with the aim of minimizing false positives.
+
+The rest of this paper is structured as follows. Chapter \ref{ch:backgr} defines our similarity measure. In chapter \ref{ch:methods} we describe our implementation. In chapter \ref{ch:res} we specify the experimental setup and finally interpret the results in Chapter \ref{ch:conclusion}.

@@ -1,0 +1,24 @@
+% dups found: 748 (16.63%)
+The script was written in Python using the \href{https://pandas.pydata.org/}{\texttt{pandas}} and \href{https://github.com/life4/textdistance}{\texttt{textdistance}} libraries to create data frames and calculating Levenshtein distance respectively. The assignment of the variables defined in Section \ref{ch:methods} that we used can be seen in Table \ref{tab:varset}.
+
+\begin{table}[ht!]
+    \centering
+    \begin{tabular}{c|c|c|c|c|c}
+        $T$ & $B$ & $E$ & $P$ & $N$ & $I$  \\
+        \hline
+        $0.95$ & $0.1$ & $0.15$ & $0.15$ & $0.25$ & $0.25$
+    \end{tabular}
+    \caption{The assignment of variables used in the script.}
+    \label{tab:varset}
+\end{table}
+
+The sizes of the groups of duplicates can be seen in Figure \ref{tab:dupgrpsize} but these groups will include all individuals having at least one duplicate. If we were transforming the data we would want to keep one and update rows in other tables for the other ones.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[scale=0.14]{img/grpsize.pdf}
+    \caption{The distribution of the size of duplication groups, each group being a single real life individual.}
+    \label{tab:dupgrpsize}
+\end{figure}
+
+The total number of duplicates found was 748. This number is excluding one row from each group of connected duplicates. That amounts to $16.63\%$ of all rows.

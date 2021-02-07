@@ -1,0 +1,45 @@
+
+
+We begin by grouping the individual according to their first letter in lower case where some Icelandic letters are mapped to their English counterparts as shown in Table \ref{tab:icemap}.
+\begin{table}[ht!]
+    \centering
+    \begin{tabular}{c|c|c|c|c|c|c}
+        á & é & í & ó & ý & ð & ö  \\
+        \hline
+        a & e & i & o & y & d & o 
+    \end{tabular}
+    \caption{The mapping of some Icelandic letters to their English counterparts.}
+    \label{tab:icemap}
+\end{table}
+This is done to reduce the number of comparisons needed assuming typos are rare in the first letter of a word.
+
+For each group we compare every pair and assess whether they are the same person or not. If a pair is considered to be the same person, we connect them in a graph data structure so we can easily extract them as a group later.
+
+The process of determining each pair starts with mapping the names to lower case and according to the map in Table \ref{tab:icemap}. This is done to catch typos and informal writing styles. We also remove any ``son'' and ``dottir'' endings as they will skew the similarity function towards deciding on a match. Let $\omega_1$ and $\omega_2$ be the pair's names after the mapping. We set an initial threshold for the similarity function to a value $T \in [0,1]$. 
+\begin{table}[ht!]
+    \centering
+    \begin{tabular}{c|l}
+        $T$ & Initial threshold \\
+        \hline
+        $B$ & Same birthday \\
+        \hline
+        $E$ & Shared email \\
+        \hline
+        $P$ & Shared phone number \\
+        \hline
+        $N$ & Matches nickname\\
+        \hline
+        $I$ & Same initials
+    \end{tabular}
+    \caption{Summary of variables. Their meaning or condition is on the right side.}
+    \label{tab:vardef}
+\end{table}
+If the pair shares a birthday, email or phone number we reduce the threshold by $B$, $E$ and $P$ respectively. If none of these are shared and their teams are not similar (with a high threshold) we decide the pair is not the same person regardless of the name. If birthday, email or phone number is shared we further check if the first name of one matches a set of predefined nick names for the other and if their initials match, reducing the threshold by $N$ and $I$ (respectively) in either case. Finally we decide that the pair is actually the same person if $\plev{\omega_1}{\omega_2} > T$. If not they are considered as two unique individuals. This process is summarized in Figure \ref{fig:flow}.
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.75]{img/flowchart.pdf}
+    \caption{Flowchart of how the decision of determining if two rows are the same real life person or not. It shows how the threshold ($T$) can be lowered by various factors. Boolean values are represented with 0 and 1.}
+    \label{fig:flow}
+\end{figure}
+
+After going through all pairs in all groups we have a set of graphs connecting all occurrences of individuals that appear more than once. We do not actually change the database nor decide which row is kept.
