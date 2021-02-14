@@ -1,0 +1,5 @@
+There is always room for improvements, both in reducing false positives and better ways of detecting duplicates. There are namely two methods we wanted to try.
+
+We are not utilizing the other tables at all. They contain a lot of information that we can use to avoid false positives. Suppose two rows we think are the same person play for different teams in the same tournament or one is maybe a referee and the other one playing. That makes them an unlikely candidate for being the same actual person.
+
+Hagstofa Íslands is an Icelandic public institution that tracks various statistics, one being how many people have specific names, either as first or second names. For example, there are a lot of people with Jón as their first name but very few with the first name Þormóður. We could scrape this data and make the threshold depend on name rarity.

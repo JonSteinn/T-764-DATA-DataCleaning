@@ -12,7 +12,7 @@ The script was written in Python using the \href{https://pandas.pydata.org/}{\te
     \label{tab:varset}
 \end{table}
 
-The sizes of the groups of duplicates can be seen in Figure \ref{tab:dupgrpsize} but these groups will include all individuals having at least one duplicate. If we were transforming the data we would want to keep one and update rows in other tables for the other ones.
+The sizes of the groups of duplicates can be seen in Figure \ref{tab:dupgrpsize} but these groups include the original.
 
 \begin{figure}[ht!]
     \centering
@@ -21,4 +21,4 @@ The sizes of the groups of duplicates can be seen in Figure \ref{tab:dupgrpsize}
     \label{tab:dupgrpsize}
 \end{figure}
 
-The total number of duplicates found was 748. This number is excluding one row from each group of connected duplicates. That amounts to $16.63\%$ of all rows.
+The total number of duplicates found was 748. This number is excluding the original rows from each group of connected duplicates. That amounts to $16.63\%$ of all rows.

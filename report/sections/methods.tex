@@ -34,7 +34,7 @@ The process of determining each pair starts with mapping the names to lower case
     \caption{Summary of variables. Their meaning or condition is on the right side.}
     \label{tab:vardef}
 \end{table}
-If the pair shares a birthday, email or phone number we reduce the threshold by $B$, $E$ and $P$ respectively. If none of these are shared and their teams are not similar (with a high threshold) we decide the pair is not the same person regardless of the name. If birthday, email or phone number is shared we further check if the first name of one matches a set of predefined nick names for the other and if their initials match, reducing the threshold by $N$ and $I$ (respectively) in either case. Finally we decide that the pair is actually the same person if $\plev{\omega_1}{\omega_2} > T$. If not they are considered as two unique individuals. This process is summarized in Figure \ref{fig:flow}.
+If the pair shares a birthday, email or phone number we reduce the threshold by $B$, $E$ and $P$ respectively. If none of these are shared and their teams are not similar (with a high threshold) we decide the pair is not the same person regardless of the name. If birthday, email or phone number is shared we further check if the first name of one matches a set of predefined nick names for the other and if their initials match, reducing the threshold by $N$ and $I$ respectively. Finally we decide that the pair is actually the same person if $\plev{\omega_1}{\omega_2} > T$. If not they are considered as two unique individuals. This process is summarized in Figure \ref{fig:flow}.
 \begin{figure}
     \centering
     \includegraphics[scale=0.75]{img/flowchart.pdf}
@@ -42,4 +42,4 @@ If the pair shares a birthday, email or phone number we reduce the threshold by 
     \label{fig:flow}
 \end{figure}
 
-After going through all pairs in all groups we have a set of graphs connecting all occurrences of individuals that appear more than once. We do not actually change the database nor decide which row is kept.
+After going through all pairs in all groups we have a set of graphs connecting all occurrences of individuals that appear more than once. We do not actually change the database but rather create a map from the original row to its duplicates. The timestamp column is used to decide who is the original.

@@ -1,3 +1,5 @@
 It is difficult to measure our success without knowing which rows are duplicates. The grouped rows were skimmed over to see if any false positives had occurred but none were spotted. If that is indeed the case, then any reduction of data without removing information can be considered a success.
 
-Considering this database was in actual use it is quite astonishing it has 14 rows of the same individual. It underlies the need for cleaning data and what problems identifying by name and date of birth can bring.
+Considering this database was in actual use it is quite astonishing it has 14 rows of the same individual. It underlies the need for cleaning data and what problems identifying by name can bring.
+
+Regardless of identifiers, there will always be errors when someone is manually writing to databases. We could use a combination of fields with at least one unique field such as email but that does not guard against human errors. We could provide a suggestion of matches for the person typing them in, similar to how we are finding duplicates here, where he can choose to add to an existing individual or create a new one.
