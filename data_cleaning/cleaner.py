@@ -15,9 +15,10 @@ class Cleaner:
 
     # pylint: disable=too-few-public-methods
 
-    def __init__(self, db: Database):
+    def __init__(self, db: Database, comparator: Dict[int, datetime.datetime]):
         self.db: Database = db
         self.duplicate_tracker: Dict[str, Graph] = {}
+        self.cmp = comparator
 
     def _process(self):
         by_first_letter: pd.core.groupby.generic.DataFrameGroupBy = (
@@ -151,7 +152,7 @@ class Cleaner:
         self.duplicate_tracker.clear()
         self._process()
         yield from (
-            sorted(grp)
+            sorted(grp, key=lambda k: self.cmp[k])
             for graph in self.duplicate_tracker.values()
             for grp in graph.find_grps()
         )
