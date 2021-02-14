@@ -21,7 +21,7 @@ The detection is quite simple. We begin by grouping the individuals by first let
 typos are rare for the first letter. This reduces the amount of comparisons we make.
 Then we compare each entry in each group to every other with a similarity function and
 if we match, they are declared as duplicates. A graph is used to group together those
-that are the same individual. No specific entry in a group of the same individual is
+that are the same individual. The entry with the earliest timestamp of each group is
 used as the "original".
 
 ## Similarity 
